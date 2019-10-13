@@ -1,0 +1,223 @@
+﻿<Window x:Class="UnipiStudents.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnipiStudents"
+        xmlns:VM="clr-namespace:UnipiStudents.ViewModels"
+        xmlns:views="clr-namespace:UnipiStudents.Views"
+        xmlns:viewsMockData="clr-namespace:UnipiStudents.Views.MockDataViews"
+        xmlns:enums="clr-namespace:UnipiStudents.Models"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1000">
+    <Window.DataContext>
+        <VM:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="CourseViewTemplate" DataType="{x:Type VM:CourseViewModel}">
+            <views:CourseView DataContext="{Binding CourseViewModel}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="CourseViewTemplateData" DataType="{x:Type VM:CourseViewModel}">
+            <viewsMockData:CourseMockDataView DataContext="{Binding CourseViewModel}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="LabViewTemplate" DataType="{x:Type VM:LabViewModel}">
+            <views:LabView DataContext="{Binding LabViewModel}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="LabViewTemplateData" DataType="{x:Type VM:LabViewModel}">
+            <viewsMockData:LabMockDataView DataContext="{Binding LabViewModel}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="GroupViewTemplate" DataType="{x:Type VM:GroupViewModel}">
+            <views:LabView DataContext="{Binding GroupViewModel}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="StudentGroupViewTemplateData" DataType="{x:Type VM:GroupViewModel}">
+            <viewsMockData:StudentGroupMockDataView DataContext="{Binding GroupViewModel}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="StudentViewTemplate" DataType="{x:Type VM:StudentViewModel}">
+            <views:LabView DataContext="{Binding StudentViewModel}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="StudentViewTemplateData" DataType="{x:Type VM:StudentViewModel}">
+            <viewsMockData:StudentMockDataView DataContext="{Binding StudentViewModel}"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Margin="2,0,2,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="180" Width="*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Menu  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <MenuItem Command="{Binding AddCourseCommand}">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image  Height="32" Stretch="Uniform" Source="Icons\icons8-course-40.png"   />
+                        <TextBlock Text="Add Course" HorizontalAlignment="Center" FontWeight="Medium"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Command="{Binding AddLabCommand}">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="70" Height="32" Source="Icons\icons8-training-40.png"   />
+                        <TextBlock Text="Add Lab" HorizontalAlignment="Center" FontWeight="Medium"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Command="{Binding AddGroupCommand}">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Width="70" Height="32" Source="Icons\icons8-add-user-group40.png"   />
+                        <TextBlock Text="Add Group" HorizontalAlignment="Center" FontWeight="Medium"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </Menu>
+        
+        <!--Courses List-->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <TreeView x:Name="CoursesTree" SelectedItemChanged="CoursesTree_SelectedItemChanged">
+                <TreeViewItem x:Name="CoursesTree1" Header="Courses" ItemsSource="{Binding CoursesCollection}"  IsExpanded="True">
+                    <TreeViewItem.ItemTemplate>
+                        <HierarchicalDataTemplate x:Name="Level1"  ItemsSource="{Binding Labs}">
+                            <TextBlock FontWeight="Bold"  Text="{Binding Path=CourseName}" />
+
+                            <HierarchicalDataTemplate.ItemTemplate>
+                                <HierarchicalDataTemplate x:Name="Level2" ItemsSource="{Binding StudentGroups}">
+                                    <TextBlock FontWeight="Bold" Text="{Binding Path=LabName}"/>
+
+                                    <HierarchicalDataTemplate.ItemTemplate>
+                                        <HierarchicalDataTemplate x:Name="Level3" ItemsSource="{Binding Students}">
+                                            <TextBlock FontWeight="Bold" Text="{Binding Path=GroupName}"/>
+
+                                            <HierarchicalDataTemplate.ItemTemplate>
+                                                <HierarchicalDataTemplate x:Name="Level4">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock  Text="{Binding Path=LastName}"/>
+                                                        <TextBlock  Text=" "/>
+                                                        <TextBlock  Text="{Binding Path=FirstName}"/>
+                                                    </StackPanel>
+                                                </HierarchicalDataTemplate>
+                                            </HierarchicalDataTemplate.ItemTemplate>
+
+                                        </HierarchicalDataTemplate>
+
+                                    </HierarchicalDataTemplate.ItemTemplate>
+                                </HierarchicalDataTemplate>
+                            </HierarchicalDataTemplate.ItemTemplate>
+
+                        </HierarchicalDataTemplate>
+                    </TreeViewItem.ItemTemplate>
+                </TreeViewItem>
+                <!--<TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate x:Name="Level1" ItemsSource="{Binding Labs}">
+                        <TextBlock FontWeight="Bold"  Text="{Binding Path=CourseName}" />
+                        
+                        <HierarchicalDataTemplate.ItemTemplate>
+                            <HierarchicalDataTemplate x:Name="Level2" ItemsSource="{Binding StudentGroups}">
+                                <TextBlock FontWeight="Bold" Text="{Binding Path=LabName}"/>
+                                
+                                <HierarchicalDataTemplate.ItemTemplate>
+                                    <HierarchicalDataTemplate x:Name="Level3" ItemsSource="{Binding Students}">
+                                        <TextBlock FontWeight="Bold" Text="{Binding Path=GroupName}"/>
+
+                                        <HierarchicalDataTemplate.ItemTemplate>
+                                            <HierarchicalDataTemplate x:Name="Level4">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="{Binding Path=LastName}"/>
+                                                    <TextBlock  Text=" "/>
+                                                    <TextBlock  Text="{Binding Path=FirstName}"/>
+                                                </StackPanel>
+                                            </HierarchicalDataTemplate>
+                                        </HierarchicalDataTemplate.ItemTemplate>
+                                        
+                                    </HierarchicalDataTemplate>
+                                    
+                                </HierarchicalDataTemplate.ItemTemplate>
+                            </HierarchicalDataTemplate>
+                        </HierarchicalDataTemplate.ItemTemplate>
+                        
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>-->
+                    
+            </TreeView>
+        </Grid>
+        
+        <!--Student List-->
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Menu Grid.Row="0" Height="32">
+                    <MenuItem IsEnabled="False">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Students List" FontWeight="Bold" />
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Command="{Binding AddCourseCommand}" HorizontalAlignment="Right" >
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Vertical">
+                                <Image Stretch="None"  Source="Icons\icons8-add-user-male-30.png"   />
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Command="{Binding AddCourseCommand}" HorizontalAlignment="Right" >
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Vertical">
+                                <Image   Source="Icons\icons8-denied-30.png"   />
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+                <ListView Grid.Row="1" x:Name="StudentList" ItemsSource="{Binding StudentCollection}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding LastName}" />
+                                <TextBlock Text=" " />
+                                <TextBlock Text="{Binding FirstName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+        
+        <GridSplitter Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+        
+        <!--Main Content-->
+        <Grid Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" >
+            <ContentControl x:Name="MainContent">
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding TypeOfViewDisplayed}" Value="{x:Static enums:TypeOfView.CourseView}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource CourseViewTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding TypeOfViewDisplayed}" Value="{x:Static enums:TypeOfView.LabView}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource LabViewTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding TypeOfViewDisplayed}" Value="{x:Static enums:TypeOfView.GroupView}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource GroupViewTemplate}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding TypeOfViewDisplayed}" Value="{x:Static enums:TypeOfView.StudentView}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource StudentViewTemplate}" />
+                            </DataTrigger>
+                            <!--<DataTrigger Binding="{Binding SelectedViewModel}"  Value="{x:Type Type={x:Type VM:CourseViewModel}}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource CourseViewTemplate}" />
+                            </DataTrigger>-->
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+    </Grid>
+</Window>
