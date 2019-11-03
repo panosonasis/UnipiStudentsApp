@@ -10,7 +10,41 @@
     <UserControl.DataContext>
         <VM:CourseViewModel/>
     </UserControl.DataContext>
-    <Grid >
-            
+    <Grid Margin="5,30,5,10">
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Margin" Value="0,03,0,5"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5,3,5,5"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Course Name:"></Label>
+        <TextBox  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"></TextBox>
+        <Label Grid.Row="1" Content="Course's Professor:"></Label>
+        <TextBox  Grid.Row="1" Grid.Column="1"></TextBox>
+        <Label Grid.Row="2" Content="Course Semester:"></Label>
+        <TextBox  Grid.Row="2" Grid.Column="1"></TextBox>
+        <Label Grid.Row="3" Grid.ColumnSpan="2" Content="Course Description:"></Label>
+        <TextBox  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Height="170"  Text=""></TextBox>
+
     </Grid>
 </UserControl>

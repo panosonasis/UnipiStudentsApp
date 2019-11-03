@@ -6,7 +6,43 @@
              xmlns:local="clr-namespace:UnipiStudents.Views.MockDataViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"  Background="LightSteelBlue">
-    <Grid>
-            
+    <Grid Margin="5,30,5,10">
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Margin" Value="0,03,0,5"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5,3,5,5"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="130"/>
+            <RowDefinition  Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Lab Name:"></Label>
+        <TextBox  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"  Text="Advanced Topics of Object - Oriented Programming (Java)"></TextBox>
+        <Label Grid.Row="1" Content="Lab's Professor:"></Label>
+        <TextBox  Grid.Row="1" Grid.Column="1"  Text="Professor1"></TextBox>
+        <Label Grid.Row="2" Content="Lab Semester:"></Label>
+        <TextBox  Grid.Row="2" Grid.Column="1"   Text="A semester"></TextBox>
+        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" Content="Lab Description:"></Label>
+        <TextBox  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Height="130"  Text=""></TextBox>
+        <Button Grid.Row ="5" Grid.Column="1" Content="CANCEL" Height="Auto" Margin="120,5,5,5"></Button>
+        <Button Grid.Row ="5" Grid.Column="2" Content="OK" Height="Auto" Margin="5,5,43,5"></Button>
     </Grid>
 </UserControl>

@@ -18,10 +18,8 @@ C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\Views\StudentV
 C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\UnipiStudents.g.resources
 C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\UnipiStudents.Properties.Resources.resources
 C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\UnipiStudents.csproj.GenerateResource.cache
-C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\UnipiStudents.csproj.CoreCompileInputs.cache
 C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\UnipiStudents.exe
 C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\UnipiStudents.pdb
-C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\UnipiStudents.csprojAssemblyReference.cache
 C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\Views\MockDataViews\CourseMockDataView.g.cs
 C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\Views\MockDataViews\CourseMockDataView.baml
 C:\Users\panos\source\repos\UnipiStudents\UnipiStudents\obj\Debug\Views\MockDataViews\LabMockDataView.g.cs

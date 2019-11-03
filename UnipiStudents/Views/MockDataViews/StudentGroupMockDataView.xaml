@@ -4,9 +4,66 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UnipiStudents.Views.MockDataViews"
+             xmlns:VM="clr-namespace:UnipiStudents.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             d:DesignHeight="450" d:DesignWidth="800" Background="LightSteelBlue">
+    <Grid Margin="5,30,5,10">
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Margin" Value="0,03,0,5"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5,3,5,5"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto" MinHeight="45"/>
+            <RowDefinition  Height="auto" MinHeight="11"/>
+            <RowDefinition  Height="auto" MinHeight="11"/>
+            <RowDefinition  Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Member 1" Grid.Column="1" HorizontalAlignment="Center" Margin="30,3,30,5" Width="92"></Label>
+        <Label Grid.Row="0" Content="Member 2" Grid.Column="2" HorizontalAlignment="Center" Margin="30,3,31,5" Width="92"></Label>
+        <Label Grid.Row="0" Content="Member 3" Grid.Column="3" HorizontalAlignment="Center" Margin="30,3,30,5" Width="92"></Label>
+        <Label Grid.Row="0" Content="Member 4" Grid.Column="4" HorizontalAlignment="Center" Margin="31,3,30,5" Width="92"></Label>
+        <Label Grid.Row="1" Content="Student's Name:"></Label>
+        <TextBox  Grid.Row="1" Grid.Column="1" Text="Manos" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <TextBox  Grid.Row="1" Grid.Column="2" Text="Nikos" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <TextBox  Grid.Row="1" Grid.Column="3" Text="Panos" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <TextBox  Grid.Row="1" Grid.Column="4" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <Label Grid.Row="2" Content="Student's Surnamme:"></Label>
+        <TextBox  Grid.Row="2" Grid.Column="1" Text="Adamopoulos" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <TextBox  Grid.Row="2" Grid.Column="2" Text="Benakis" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <TextBox  Grid.Row="2" Grid.Column="3" Text="Onasis" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <TextBox  Grid.Row="2" Grid.Column="4" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <Label Grid.Row="3" Content="Student's ID"></Label>
+        <TextBox  Grid.Row="3" Grid.Column="1" Text="ΜΠΣ18001" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <TextBox  Grid.Row="3" Grid.Column="2" Text="ΜΠΣ18016" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <TextBox  Grid.Row="3" Grid.Column="3" Text="ΜΠΣ18028" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <TextBox  Grid.Row="3" Grid.Column="4" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <Label Grid.Row="5" Grid.Column="0" Content="Overall Grade:" Margin="-10,0,10,0"/>
+        <TextBox  Grid.Row="5" Grid.Column="1" Text="9,8" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <Label Grid.Row="6" Grid.Column="0" Content="Submited Project File" Margin="-10,0,10,0"/>
+        <TextBox  Grid.Row="6" Grid.Column="1" Text="Outlook1.zip" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <Button Grid.Row="6" Grid.Column="2" Content="Browse File" Height="Auto" Margin="5,5,5,5"></Button>
+        <Button Grid.Row ="8" Grid.Column="1" Content="CANCEL" Height="Auto" Margin="55,50,5,5"></Button>
+        <Button Grid.Row ="8" Grid.Column="2" Content="OK" Height="Auto" Margin="5,50,43,5"></Button>
+
     </Grid>
 </UserControl>

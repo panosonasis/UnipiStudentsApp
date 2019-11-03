@@ -4,9 +4,47 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UnipiStudents.Views.MockDataViews"
+             xmlns:VM="clr-namespace:UnipiStudents.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             d:DesignHeight="450" d:DesignWidth="800" Background="LightSteelBlue">
+    <Grid Margin="5,30,5,10">
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Margin" Value="0,03,0,5"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5,3,5,5"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="180" />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="80"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition  Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Student's Details"></Label>
+        <Label Grid.Row="1" Content="Student's Name:"></Label>
+        <TextBox  Grid.Row="1" Grid.Column="1" Text="Manos" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <Label Grid.Row="2" Content="Student's Surnamme:"></Label>
+        <TextBox  Grid.Row="2" Grid.Column="1" Text="Adamopoulos" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <Label Grid.Row="3" Content="Student's ID"></Label>
+        <TextBox  Grid.Row="3" Grid.Column="1" Text="ΜΠΣ18001" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <Label Grid.Row="4" Content="Student's email:"></Label>
+        <TextBox  Grid.Row="4" Grid.Column="1" Text="man.adamopoulos@gmail.com" Grid.ColumnSpan="2" Height="Auto" Margin="5,5,5,5"></TextBox>
+        <Button Grid.Row ="5" Grid.Column="1" Content="CANCEL" Height="Auto" Margin="55,50,5,5"></Button>
+        <Button Grid.Row ="5" Grid.Column="2" Content="OK" Height="Auto" Margin="5,50,43,5"></Button>
     </Grid>
 </UserControl>
