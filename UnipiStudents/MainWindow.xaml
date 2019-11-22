@@ -52,7 +52,7 @@
         </Grid.ColumnDefinitions>
         
         <Menu  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-            <MenuItem Command="{Binding AddCourseCommand}">
+            <MenuItem Name="AddCourse" Command="{Binding AddCourseCommand}" Click="AddCourse_Click">
                 <MenuItem.Header>
                     <StackPanel Orientation="Vertical">
                         <Image  Height="32" Stretch="Uniform" Source="Icons\icons8-course-40.png"   />
@@ -60,7 +60,7 @@
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem Command="{Binding AddLabCommand}">
+            <MenuItem Name="AddLab" Command="{Binding AddLabCommand}" Click="AddLab_Click">
                 <MenuItem.Header>
                     <StackPanel Orientation="Vertical">
                         <Image Width="70" Height="32" Source="Icons\icons8-training-40.png"   />
@@ -68,7 +68,7 @@
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem Command="{Binding AddGroupCommand}">
+            <MenuItem Name="AddGroup" Command="{Binding AddGroupCommand}" Click="AddGroup_Click" >
                 <MenuItem.Header>
                     <StackPanel Orientation="Vertical">
                         <Image Width="70" Height="32" Source="Icons\icons8-add-user-group40.png"   />
@@ -177,7 +177,7 @@
                         </MenuItem.Header>
                     </MenuItem>
                 </Menu>
-                <ListView Grid.Row="1" x:Name="StudentList" ItemsSource="{Binding StudentCollection}">
+                <ListView Grid.Row="1" x:Name="StudentList"  ItemsSource="{Binding StudentCollection}" PreviewMouseLeftButtonDown="StudentList_PreviewMouseLeftButtonDown">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
